@@ -3,7 +3,6 @@ class AttendancesController < ApplicationController
   
 
   def index
-
     @event = Event.find(params[:event_id])
     @admin = User.find(@event.admin_id)
   end
