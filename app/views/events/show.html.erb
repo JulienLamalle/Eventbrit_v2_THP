@@ -16,4 +16,5 @@
   <% unless is_owner?(@event.admin_id) || already_present?(@event) %>
     <%= link_to "Participer à cet event", new_event_charge_path(event_id: @event.id), class: 'btn btn-outline-danger btn-sm' %>
   <% end %>
+  <%= link_to "Mon espace event", attendances_path(@event.id), class: 'btn btn-outline-danger btn-sm', style: 'margin-right: 10px' %>
 </div>

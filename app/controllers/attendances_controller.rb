@@ -1,16 +1,15 @@
 class AttendancesController < ApplicationController
-  #before_action :set_attendance, only: [:new, :create, :index, :destroy]
-  
+  before_action :get_current_event
+  attr_accessor :user, :event
 
   def index
-    @event = Event.find(params[:event_id])
-    @admin = User.find(@event.admin_id)
+    @participants = Array.new
+    User.where(id: Attendance.where(event: @event).each {|attendance| @participants << User.find(attendance.participant_id) })
   end
 
   def new
     create
   end
-
 
   def create
     @attendance = Attendance.new(participant_id: current_user.id, stripe_customer_id: params[:token], event: Event.find(params[:event]))
@@ -28,6 +27,10 @@ class AttendancesController < ApplicationController
 
     def set_attendance
       @attendance = Attendance.find(params[:id])
+    end
+    
+    def get_current_event
+      @event = Event.where(params[id: :event_id])
     end
 
 end
