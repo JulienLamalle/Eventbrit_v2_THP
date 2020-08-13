@@ -1,10 +1,10 @@
 class AttendancesController < ApplicationController
-  before_action :get_current_event
+  before_action :authenticate_user!
   attr_accessor :user, :event
 
   def index
-    @participants = Array.new
-    User.where(id: Attendance.where(event: @event).each {|attendance| @participants << User.find(attendance.participant_id) })
+    @event = Event.find(params[:event_id])
+    @attendances = @event.attendances
   end
 
   def new
@@ -28,9 +28,4 @@ class AttendancesController < ApplicationController
     def set_attendance
       @attendance = Attendance.find(params[:id])
     end
-    
-    def get_current_event
-      @event = Event.where(params[id: :event_id])
-    end
-
 end

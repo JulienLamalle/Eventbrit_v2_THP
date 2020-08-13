@@ -29,6 +29,21 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      flash[:success] = "Merci #{@event.admin.first_name} ! Nous avons pu modifier l'event : #{@event.title} "
+      redirect_to :controller => 'events', :action => 'show', id: @event.id
+    else
+      flash[:danger] = "Nous n'avons pas réussi à modifier l'event"
+      render :action => 'edit'
+    end
+  end
+
   private
 
   def event_params
