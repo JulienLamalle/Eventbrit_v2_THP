@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show]
+  before_action :authenticate_user!, only: [:new, :create, :show, :update, :destroy]
   attr_reader :events
 
   def index
@@ -43,6 +43,18 @@ class EventsController < ApplicationController
       render :action => 'edit'
     end
   end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      flash[:success] = "Merci #{@event.admin.first_name} ! Nous avons pu supprimer l'event : #{@event.title} "
+      redirect_to :controller => 'events', :action => 'index' 
+    else
+      flash[:danger] = "Nous n'avons pas réussi à suppimer l'event ! "
+      render :action => 'edit'
+    end
+  end
+
 
   private
 
