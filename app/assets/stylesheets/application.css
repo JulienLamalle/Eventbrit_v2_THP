@@ -24,7 +24,8 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 400px;
+  height: auto;
+  margin-top: 150px;
 }
 
 .Userinfos {
@@ -52,10 +53,6 @@
   border: solid 0.1px grey;
   border-radius: 0.3rem; 
   padding-top: 5px;
-}
-
-.card-body.Show {
-  opacity: 0.50;
 }
 
 .card-header.Show {
@@ -94,4 +91,13 @@
   border-color: #d6e9c6;
   color: #ffffff;
   text-align: left;
+}
+
+
+.event_picture {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
 }

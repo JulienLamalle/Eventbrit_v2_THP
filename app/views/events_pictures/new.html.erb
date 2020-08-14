@@ -1,0 +1,21 @@
+<div class=" col-md-12  row">
+  <p class="col-lg-1"></p>
+  <h1 class="col-lg-11 text-center" style="margin: 15px 0"> Créez votre event </h1>
+</div>
+<div class ='align-middle text-center'>
+	<div class="card m-5 p-5" style="height:auto">
+		<div class="card-body">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+          <%= form_tag event_events_pictures_path(@event), multipart: true do %>
+            <%= file_field_tag :event_picture %>
+            <%= submit_tag "Envoyer l'image" , :class => "btn btn btn-block btn-outline-success mt-4"%>
+          <% end %>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   belongs_to :admin, foreign_key: 'admin_id', class_name: "User"
   has_many :participants, through: :attendances, class_name: 'User'
   has_many :attendances
-  
+  has_one_attached :event_picture
 
   validate :cant_start_in_the_past
   validate :duration_be_positive_and_multiple_of_5

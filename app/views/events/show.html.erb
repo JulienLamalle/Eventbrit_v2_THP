@@ -1,12 +1,16 @@
 <div class="cardShowEvent" > 
   <div class="card border-secondary mb-3 text-center">
     <div class="card-header border-secondary Show"><%= @event.title %></div>
-    <div class="card-body Show">
-      <h4 class="card-title"><%= @event.title%></h4>
-      <p class="card-text">Le prix de cet événement sera de <%= @event.price %> euro et il se déroulera à <strong><%= @event.location %></strong></p>
-      <p class="card-text">Le total de personnes participant à cet event est de <%= @participants.count %> personnes </p>
-      <p class="card-text">Voici l'email de l'administrateur de l'event : <%= @admin.email %></p>
-      <p>Cet event débutera le <span class="text-info"><%= @event.start_date.strftime("%d %B %Y, %H:%M")  %></span> et se finira le <span class="text-info"><%= end_date(@event).strftime("%d %B %Y, %H:%M") %></span></p>
+      <div class="card-body Show">
+        <% if @event.event_picture.attached? %>
+          <%= image_tag @event.event_picture, alt: 'event picture', class: "event_picture" %>
+        <% end %>
+        <h4 class="card-title"><%= @event.title%></h4>
+        <p class="card-text">Le prix de cet événement sera de <%= @event.price %> euro et il se déroulera à <strong><%= @event.location %></strong></p>
+        <p class="card-text">Le total de personnes participant à cet event est de <%= @participants.count %> personnes </p>
+        <p class="card-text">Voici l'email de l'administrateur de l'event : <%= @admin.email %></p>
+        <p>Cet event débutera le <span class="text-info"><%= @event.start_date.strftime("%d %B %Y, %H:%M")  %></span> et se finira le <span class="text-info"><%= end_date(@event).strftime("%d %B %Y, %H:%M") %></span></p>
+      </div>
     </div>
   </div>
 </div>
