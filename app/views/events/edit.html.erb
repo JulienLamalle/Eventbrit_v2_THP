@@ -59,7 +59,10 @@
 
             <% end %>
           </form>
-          <%= link_to "Ajouter une image", new_event_events_picture_path(@event), :class => "btn btn btn-block btn-outline-warning mt-4" %>
+          <div class="actions mt-5 row">
+            <div class="col-lg-3"></div>
+            <%= link_to "Ajouter une image", new_event_events_picture_path(@event), :class => "btn btn btn-block btn-outline-warning mt-4" %>
+          </div>
         </div>
       </div>
     </div>
