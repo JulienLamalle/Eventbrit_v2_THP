@@ -1,0 +1,44 @@
+<header>
+
+<!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark scrolling-navbar">
+    <%= link_to "Event-THP", root_path, :class => "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!--Links-->
+      <ul class="navbar-nav mr-auto smooth-scroll">
+        <li class="nav-item">
+          <%= link_to "Accueil", root_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Créer un event", new_event_path , :class => "nav-link" %>
+        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mon profil
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown-connexion">
+              <%= link_to current_user.first_name, user_path(:id => current_user.id), class: "dropdown-item" %>
+              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
+        <% if !user_signed_in? %>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              S'inscrire / Se connecter
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown-connexion">
+              <%= link_to "Inscrivez-vous", new_user_registration_path , class: "dropdown-item" %>
+              <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
