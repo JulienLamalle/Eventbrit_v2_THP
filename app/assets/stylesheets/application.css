@@ -14,6 +14,15 @@
  *= require_self
  */
 
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
 .jumbotron.jumbotron-fluid.text-center {
   background-image: url('https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg');
   background-size: cover;
@@ -102,12 +111,27 @@
     margin-bottom: 20px;
 }
 
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
 .page-footer {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #303030;
   height: 50px;
-  bottom: 0;
   margin-top: 20px;
+}
+
+.footercontain {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
